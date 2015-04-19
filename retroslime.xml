@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<retroslime>
+  <GeneralInfos>
+    <lastSave date="2013-06-11T22:05:17+02:00"/>
+  </GeneralInfos>
+  <Trip>
+    <CurrentTrip latitude="40.012501664751" longitude="110.63292000589" travelAngle="4.4924774946335" travelSpeed="0.75666666666667"/>
+  </Trip>
+  <UrlToVisit>
+    <Url address="http://www.officialdatabase.org" addDate="2013-06-11T10:04:41+02:00"/>
+  </UrlToVisit>
+  <BannedUrl>
+  </BannedUrl>
+  <WipSentences>
+  </WipSentences>
+  <BigSentences>
+  </BigSentences>
+  <ReadyTweets>
+  </ReadyTweets>
+  <DoneTweets>
+  </DoneTweets>
+  <EmailAddresses>
+  </EmailAddresses>
+  <Hashtags>
+  </Hashtags>
+</retroslime>
