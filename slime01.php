@@ -9,10 +9,10 @@ require_once('TwitterAPIExchange.php');
 
 /** Set access tokens here - see: https://dev.twitter.com/apps/ **/
 $settings = array(
-    'oauth_access_token' => "267144004-tDYmqReWGUZW1ku5ZcnnLAOHqVvN0FVok7HnHgt5",
-    'oauth_access_token_secret' => "TckhPt75mH6tiIryK2S0kZ8ZerNj8o9R2LToRwVdOfE",
-    'consumer_key' => "iWVdmdAHU4Yc9MnC8vUYRw",
-    'consumer_secret' => "etWwJppjQSsGKCslWi0QPZXSn0Mxjw2HKyNPf5Xz2g"
+    'oauth_access_token' => "",
+    'oauth_access_token_secret' => "",
+    'consumer_key' => "",
+    'consumer_secret' => ""
 );
 
 $twitterId = 267144004;
@@ -306,7 +306,9 @@ if (!$alreadyTweetedSomething) {
 			$orig_tx = 0;// default value
 			$orig_id = $repl_tw->in_reply_to_status_id_str;
 			if (strlen($orig_id)>0) {
-				$orig_tw = $twitter->get('statuses/show', array('id' => $orig_id));
+				$twitter = new TwitterAPIExchange($settings);
+				$getField = '?id='.$orig_id;
+				$orig_tw = json_decode($twitter->setGetfield($getField)->buildOauth('https://api.twitter.com/1.1/statuses/show.json', 'GET')->performRequest());
 				$orig_tx = $orig_tw->text;
 			}
 			$repl_id = $repl_tw->id_str;
@@ -1183,6 +1185,7 @@ function randomFollowerName($settings) {
 	$getField = '?screen_name=Retroslime&cursor=-1';
 	$twitter = new TwitterAPIExchange($settings);
 	$outputs = json_decode($twitter->setGetfield($getField)->buildOauth('https://api.twitter.com/1.1/followers/ids.json', 'GET')->performRequest());
+	if (!isset($outputs->ids)) return "Retroslime";
 	$chosenId = $outputs->ids[rand(0,count($outputs->ids)-1)];
 	$getField = '?user_id=' . $chosenId;
 	$twitter = new TwitterAPIExchange($settings);
